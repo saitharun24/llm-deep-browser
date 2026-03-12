@@ -1,0 +1,10 @@
+requests
+playwright
+ddgs
+beautifulsoup4
+trafilatura
+scikit-learn
+numpy
+langchain-core
+langchain-ollama
+difflib
