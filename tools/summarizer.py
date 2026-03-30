@@ -5,7 +5,7 @@ import prompts.prompts as prompts
 def summarize_chunk(fast_llm, text: str) -> str:
     if not text or not text.strip():
         return ""
-    print(text)
+    print("[BEFORE SUMMARIZATION]: " + text)
     try:
         response = fast_llm.invoke([HumanMessage(
             content=prompts.SUMMARIZE_PROMPT.format(text=text)

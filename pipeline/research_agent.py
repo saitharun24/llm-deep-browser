@@ -25,18 +25,15 @@ def run_web_research(fast_llm, smart_llm, question):
         try:
             # Step 1: Fetch
             html = fetch_html(url)
-            if not html or done.is_set():
-                return
+            if not html or done.is_set(): return
 
             # Step 2: Extract
             text = extract_content(html)
-            if not text or done.is_set():
-                return
+            if not text or done.is_set(): return
 
             # Step 3: Chunk
-            chunks = chunk_text(text)[:4]
-            if not chunks or done.is_set():
-                return
+            chunks = chunk_text(text, 4)
+            if not chunks or done.is_set(): return
 
             # Step 4: Summarize each chunk immediately
             with ThreadPoolExecutor(max_workers=len(chunks)) as chunk_executor:

@@ -80,11 +80,12 @@ Available tools and their descriptions:
 {tools}
 
 Given a question, identify which single tool is MOST appropriate to answer it.
-Consider:
+Rules (apply silently, do not explain):
 - If the question involves real-time or current data, prefer specific tools over web_search
 - If a dedicated tool exists for the data type (e.g. stock_price for stocks), always prefer it over web_search
 - Only return web_search if no more specific tool exists
 - Return null if no tool is needed (purely conversational)
+- Keep the reason to a single line, DO NOT provide multiline reason.
 
 Return ONLY a JSON object like this:
 {{"tool": "tool_name", "reason": "one line reason"}}

@@ -1,6 +1,6 @@
 import re
 
-def chunk_text(text: str, chunk_size: int = 1500, overlap: int = 150, min_chunk_size: int = 100) -> list[str]:
+def chunk_text(text: str, cutoff_chunks: int, chunk_size: int = 1500, overlap: int = 150, min_chunk_size: int = 100) -> list[str]:
     if not text or not text.strip():
         return []
     text = re.sub(r'\s+', ' ', text).strip()
@@ -34,5 +34,6 @@ def chunk_text(text: str, chunk_size: int = 1500, overlap: int = 150, min_chunk_
                 chunk = chunk[:last_period + 1]
 
         chunks.append(chunk)
+        if len(chunks) >= cutoff_chunks: break
 
     return chunks
